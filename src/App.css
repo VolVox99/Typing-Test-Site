@@ -1,38 +1,92 @@
-.App {
+#homepage {
   text-align: center;
+  /* background-color: rgb(253, 253, 253); */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.restart-button {
+  position: absolute;
+  right: 58vw;
+  top: 70vh;
+  width: 10vw;
+  
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.infos {
+  margin-top: 6vh;
+  font-size: 3vw; 
+} 
+
+#info-container {
+  position: absolute;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  top: 30vh;
+  left: 3vw;
+  
 }
 
-.App-link {
-  color: #61dafb;
+#text-prompt {
+ 
+  position: absolute;
+  margin: 0vh 32vw;
+  margin-top: 8%;
+  width: 40vw;
+  font-size: 2vh;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  border: 3px solid rgb(65, 60, 60);
+  padding: 1%;
+
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#current-word {
+  color: rgb(10, 6, 248);
+  font-weight: 900;
+}
+
+#word-error, .previous-wrong-words {
+  color: rgb(255, 0, 0);
+  font-weight: 900;
+}
+
+
+
+.text-field {
+  position: absolute;
+  top: 45vh;
+  width: 42.5vw;
+  left: 8.75vw;
+
+}
+
+
+body {
+  margin: 5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Feskipaper.com%2Fimages%2Fpolygon-background-1.jpg&f=1&nofb=1');
+  
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#title {
+  margin-top: 2vh;
+  font-size: 4vw;
+  margin-left: 4vw;
+}
+
+#completed-page{
+  text-align: center;
+  margin: 20vh 10vw;
 }
