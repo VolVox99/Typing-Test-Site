@@ -75,7 +75,7 @@ class CompletedPage extends Component {
                 </div>
 
             
-                    <Button href = '/' variant = 'contained' style = {{border: '3px solid black'}}>
+                    <Button href = '/Typing-Test-Site' variant = 'contained' style = {{border: '3px solid black'}}>
                        <span style = {{fontSize: '2vmax', textTransform: 'capitalize'}}> Try Again </span>
                     </Button> 
     
