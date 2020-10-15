@@ -16,7 +16,7 @@ function App() {
 
             <Route path = '/Typing-Test-Site/completed' exact component = {(props) => <CompletedPage {...props}/>}/>
             <Route path = '/Typing-Test-Site' exact component = {Home}/>
-            <Route path = '/Typing-Test-Site' component = {ErrorPage}/>
+            <Route path = '/Typing-Test-Site/' component = {ErrorPage}/>
 
           </Switch>
             

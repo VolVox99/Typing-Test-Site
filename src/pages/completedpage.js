@@ -58,7 +58,7 @@ class CompletedPage extends Component {
     render() {
         if(this.state.words_wrong === 'not sent'){
             return (
-                <Redirect to = 'Typing-Test-Site/404'/>
+                <Redirect to = '/Typing-Test-Site/404'/>
             )
         }
    
