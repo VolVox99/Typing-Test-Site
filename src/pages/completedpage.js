@@ -39,7 +39,7 @@ class CompletedPage extends Component {
         //this await may seem unneccesary but it wont work without it
         await this.setSearchQuery(this.state.wpm)
         //TODO make it such that it doesnt always get the first gif, it gets random one
-        let response = await axios.get('http://api.giphy.com/v1/gifs/search',
+        let response = await axios.get('https://api.giphy.com/v1/gifs/search',
         {params: {
             api_key: 'YPUYjJbq6i9K6YnqG20sSBets62lH0Ej',
             q: this.state.search_qry,
@@ -58,7 +58,7 @@ class CompletedPage extends Component {
     render() {
         if(this.state.words_wrong === 'not sent'){
             return (
-                <Redirect to = '/404'/>
+                <Redirect to = 'Typing-Test-Site/404'/>
             )
         }
    
