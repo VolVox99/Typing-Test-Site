@@ -1,92 +1,248 @@
-#homepage {
-  text-align: center;
-  /* background-color: rgb(253, 253, 253); */
-}
-
-.restart-button {
-  position: absolute;
-  right: 58vw;
-  top: 70vh;
-  width: 10vw;
-  
-
-}
-
-
-.infos {
-  margin-top: 6vh;
-  font-size: 3vw; 
-} 
-
-#info-container {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  top: 30vh;
-  left: 3vw;
-  
-}
-
-#text-prompt {
- 
-  position: absolute;
-  margin: 0vh 32vw;
-  margin-top: 8%;
-  width: 40vw;
-  font-size: 2vh;
-  color: rgb(0, 0, 0);
-  font-weight: bold;
-  border: 3px solid rgb(65, 60, 60);
-  padding: 1%;
-
-  
-}
-
-#current-word {
-  color: rgb(10, 6, 248);
-  font-weight: 900;
-}
-
-#word-error, .previous-wrong-words {
-  color: rgb(255, 0, 0);
-  font-weight: 900;
-}
-
-
-
-.text-field {
-  position: absolute;
-  top: 45vh;
-  width: 42.5vw;
-  left: 8.75vw;
-
-}
-
 
 body {
-  margin: 5;
+  
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('assets/background_image.jpg');
 
-  background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Feskipaper.com%2Fimages%2Fpolygon-background-1.jpg&f=1&nofb=1');
-  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
 
-#title {
-  margin-top: 2vh;
-  font-size: 4vw;
-  margin-left: 4vw;
+
+#homepage {
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  
 }
+
+
+#homepage > * {
+  margin: 3vh 0px;
+  width: 50vw;
+  
+}
+
+@media (max-width: 1050px){
+  #homepage > * {
+    width: 65vw;
+  }
+}
+
+@media (max-width: 800px){
+  #homepage > * {
+    width: 80vw;
+  }
+  
+  #info-container {
+    margin-top: 7vh;
+  }
+}
+
+#main-page-content > div {
+  border: 0px solid black;
+  padding: 2vh 3vw;
+  border-radius: 25px;
+  box-shadow: 7px 7px 50px 4px black;
+ 
+  
+}
+
+
+.about {
+  text-align: right;
+}
+
+.infos {
+  margin: 1.5vh auto;
+  font-size: 2vmax; 
+} 
+
+
+#values {
+  background-color: #f8f8f8;
+  border: 3px solid black;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+#restart-button {
+  margin: auto;
+  
+}
+
+#mute-button {
+  align-self: center;
+}
+
+#info-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  flex-flow: row wrap;
+  
+}
+
+#text-prompt {
+  font-size: 2.5vmax;
+  color: rgb(0, 0, 0);
+  font-weight: normal;
+  height: 13.3vh;
+  overflow: hidden;
+  user-select: none;
+  margin-bottom: 3.5vh;
+  font-family: 'Hind Vadodara', sans-serif;
+} 
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#text-prompt::-webkit-scrollbar {
+  display: none;
+}  
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#text-prompt {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+} 
+
+
+#current-word {
+  font-weight: 900;
+  text-shadow: 10px;
+}
+
+#values, #current-word {
+  color: #0105fc;
+}
+
+
+
+#word-error, .previous-wrong-words {
+  color: #f80000;
+  font-weight: 900;
+}
+
+
+#title {
+  margin-top: 0vh;
+  font-size: 4vmax;
+  font-weight: 100;
+
+}
+
+
+
+
+/* Completed page */
+
+.completed-info {
+  display: flex;
+  flex-direction: column;
+  margin: 3.5vh;
+  font-size: 2.2vmax;
+  font-weight: normal;
+  
+}
+
+.top-banner {
+  font-size: 3.7vmax;
+  margin-top: 0px;
+  font-weight: bold;
+
+}
+
 
 #completed-page{
   text-align: center;
-  margin: 20vh 10vw;
+  
 }
+
+.completed-page-gif {
+  width: 22.5vmax;
+  margin-bottom: 1vh;
+  max-width: 80vw;
+} 
+
+
+.icons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 2vh;
+}
+
+.icon {
+  margin: 0px 0.5vw;
+  
+}
+
+.icon:hover {
+  opacity: 0.75;
+  
+}
+
+
+/* End of Completed page */
+
+
+/* About bar */
+
+.about-link {
+  font-size: 1vmax;
+  font-family: 'Roboto', sans-serif;
+  opacity: 0;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+
+}
+
+
+.about-link:hover{
+  font-style: italic;
+  opacity: 1;
+
+}
+
+
+
+/* End of About bar */
+
+
+/* Error Page */
+
+
+#error-page {
+  text-align: center;
+  font-size: 2.5vmax;
+  
+}
+
+#error-page-header {
+  font-weight: 300;
+}
+
+
+#error-link {
+  color: black;
+  text-decoration: none;
+}
+
+#error-button {
+  font-size: 50px;
+  text-transform: none;
+}
+
+
+
+/* End of Error Page */
+
+
+
