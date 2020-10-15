@@ -79,10 +79,12 @@ class InputBox extends Component {
 
     updateText(event) {
 
+     
+
         //https://duncanleung.com/fixing-react-warning-synthetic-events-in-setstate/
         //For some reason if you use prevState and the function version of set state, u need to cache the value of the event or else it will give error
         let text_input = event.target.value
-
+        this.playSound(text_input)
 
         this.setState(prevState => {
             //we set this as global variable so that we can use it to know whether we should play a sound or not. If they backspaced, we dont want to play a
@@ -98,7 +100,7 @@ class InputBox extends Component {
 
 
         this.scrollPromptDown()
-        this.playSound(text_input)
+        
           
         
     }
