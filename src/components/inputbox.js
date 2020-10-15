@@ -162,7 +162,15 @@ class InputBox extends Component {
     }
     }
 
-
+    // checkToPushForwardWordIndex = (word_index) => {
+    //     if(this.state.prompt_word_typed_wrong_indexes[this.state.prompt_word_typed_wrong_indexes.length -1] === (this.state.prompt_word_typed_wrong_indexes[this.state.prompt_word_typed_wrong_indexes.length - 2] + 1)){
+    //         return word_index + 1
+            
+    //     }
+    //     else {
+    //         return word_index
+    //     }
+    // }
 
     checkCurrentWordWrong() {
         //gets all the currently typed words
@@ -219,7 +227,6 @@ class InputBox extends Component {
             }), () => {
                 //call whatever functions you need to call every interval here, 
                 this.checkTimeUp()
-            
   
             },
 
@@ -320,8 +327,7 @@ class InputBox extends Component {
 
             }
          
-            
-            console.log(this.state.word_index, this.last_word_index)
+        
                 
             //we need this so it doesnt infintely scroll
             this.last_word_index = this.state.word_index
