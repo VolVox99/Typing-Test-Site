@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core'
+import { Button , Slider} from '@material-ui/core'
 import React from 'react'
 import { styled } from '@material-ui/core/styles'
 import VolumeOffIcon from '@material-ui/icons/VolumeOff'
@@ -37,7 +37,7 @@ class MuteButton extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            muted: false
+            volume: 1
         }
 
         this.iconStyle = {
@@ -49,18 +49,32 @@ class MuteButton extends React.Component{
 
     toggle(){
 
-        this.props.self.setState(prevState => ({
-            muted: !prevState.muted
-        }))
+        this.setState(prevState => ({
+            volume: prevState.volume ? 0: 1
+        }), () => this.props.sendBack(this.state.volume))
     }
+
+    changeVolume(_, vol){
+        this.setState({
+            volume: vol
+        }, () => this.props.sendBack(vol))
+        
+    }
+
+
+
+
 
     render(){
 
         return (
-                <MutButton onClick = {() => this.toggle()} id = 'mute-button'> 
-                    {this.props.self.state.muted ? <VolumeOffIcon style = {this.iconStyle} />: <VolumeUpIcon style = {this.iconStyle} />}
-                </MutButton>
-                        
+                <div id = 'volume'>
+                    <MutButton onClick = {() => this.toggle()} id = 'mute-button'> 
+                        {this.state.volume ? <VolumeUpIcon style = {this.iconStyle} />: <VolumeOffIcon style = {this.iconStyle} />}
+                    </MutButton>
+
+                    <Slider id = 'volume-slider' min = {0} max = {1} step = {0.01} value = {this.state.volume} onChange = {(e, n) => this.changeVolume(e, n)}/>
+                </div>
         )
 }
 }

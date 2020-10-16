@@ -50,6 +50,7 @@ class InputBox extends Component {
         this.first_scrolled = false
         this.last_distance = 0
         this.last_y = 0
+        this.volume = 1
         this.throttleMs = 150
         this.past_word_wrong_indexes = []
         this.sounds = [
@@ -109,18 +110,17 @@ class InputBox extends Component {
         if(!this.state.muted){
         //space
         if(text_input[text_input.length -1] === ' '){
-            this.sounds[1][0].play()
+            this.sounds[1][0].play(this.state.volume)
         }
 
         else if(window.text_difference > 0){ 
-                                                    //because the last two are space and backspace
             let index = Math.floor(Math.random() * this.sounds[0].length)
-            this.sounds[0][index].play()
+            this.sounds[0][index].play(this.state.volume)
         
         }
         //backspace
         else {
-            this.sounds[1][1].play()
+            this.sounds[1][1].play(this.state.volume)
         }}
     }
 
@@ -161,16 +161,6 @@ class InputBox extends Component {
         return Math.round((total_chars/5)/(seconds/60))
     }
     }
-
-    // checkToPushForwardWordIndex = (word_index) => {
-    //     if(this.state.prompt_word_typed_wrong_indexes[this.state.prompt_word_typed_wrong_indexes.length -1] === (this.state.prompt_word_typed_wrong_indexes[this.state.prompt_word_typed_wrong_indexes.length - 2] + 1)){
-    //         return word_index + 1
-            
-    //     }
-    //     else {
-    //         return word_index
-    //     }
-    // }
 
     checkCurrentWordWrong() {
         //gets all the currently typed words
@@ -220,7 +210,7 @@ class InputBox extends Component {
                 current_word_wrong: this.checkCurrentWordWrong(),
                 prompt_word_typed_wrong_indexes: this.past_word_wrong_indexes,
                 accuracy: this.accuracy(),
-        
+                volume: this.volume
             
 
 
@@ -251,7 +241,6 @@ class InputBox extends Component {
             prompt_word_typed_wrong_indexes: [],
             letter_index: 0,
             accuracy: 0,
-            volume: 0.5
 
 
         })
@@ -301,6 +290,10 @@ class InputBox extends Component {
                 done: true,
             })
         }
+    }
+
+    getVolumeBack = (vol) => {
+        this.volume = vol
     }
 
 
@@ -375,7 +368,7 @@ class InputBox extends Component {
                         <div className='infos'> WPM <div id = 'values'>{this.state.WPM} </div></div>
                         <div className='infos'> Accuracy <div id = 'values'> {this.state.accuracy}%</div></div>
                         <div className='infos'> Time Left <div id = 'values'> {this.calcTimeLeft(this.state.seconds_passed)}</div></div>
-                        <MuteButton self = {this}/>
+                        <MuteButton sendBack = {this.getVolumeBack}/>
                         <RestartButton onClick = {this.restart} self = {this}  className = 'infos' id = 'restart-button' size =  'small'> 
                             <RedoIcon style={{fontSize: '4vmax'}}/>
                         </RestartButton>  
@@ -385,9 +378,8 @@ class InputBox extends Component {
 
                     <div id = 'prompt-and-box'>
                         <Text pass_back={this.getDataBack} index={this.state.word_index} error={this.state.current_word_wrong} previous_wrong_words={this.state.prompt_word_typed_wrong_indexes}/>
-      
                         <this.CustomTextField autoFocus InputProps={{style: {fontSize: '1.5vmax', width: '39vw', borderRadius: '20px'} }} InputLabelProps={{ style: { fontSize: '1.2vmax', color: '#383536'} }} className = 'text-field' 
-                        label={this.state.started_typing ? 'You got this!':"Start typing here..."} value={this.state.text}  rows={1} 
+                        label={this.state.started_typing ? 'You got this!':"Start typing here..."} value={this.state.text}  multiline rows={1} 
                         variant="filled" color = 'primary' onChange={(event) => this.updateText(event)} onPaste = {(e) => e.preventDefault()}/>
                         
                     </div>
