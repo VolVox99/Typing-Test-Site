@@ -80,7 +80,6 @@ class InputBox extends Component {
 
     updateText(event) {
 
-     
 
         //https://duncanleung.com/fixing-react-warning-synthetic-events-in-setstate/
         //For some reason if you use prevState and the function version of set state, u need to cache the value of the event or else it will give error
@@ -106,7 +105,7 @@ class InputBox extends Component {
         
     }
 
-    playSound(text_input){
+    playSound(text_input) {
         if(!this.state.muted){
         //space
         if(text_input[text_input.length -1] === ' '){
