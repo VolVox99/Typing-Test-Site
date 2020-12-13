@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 function Text(props) {
+	const { pass_back } = props
    
     
     const [text, setText] = React.useState([''])
@@ -12,8 +13,10 @@ function Text(props) {
 
 
     React.useEffect(() => {
-        get_data().then((txt) => props.pass_back(txt, prompt_box_ref, current_word_ref, prev_word_ref))
-	}, [])
+		get_data().then(txt =>
+			pass_back(txt, prompt_box_ref, current_word_ref, prev_word_ref)
+		)
+	}, [pass_back])
 	
 
     async function get_data(){
