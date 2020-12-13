@@ -58,7 +58,7 @@ class CompletedPage extends Component {
     render() {
         if(this.state.words_wrong === 'not sent'){
             return (
-                <Redirect to = '/Typing-Test-Site/404'/>
+                <Redirect to = '/404'/>
             )
         }
    
@@ -75,7 +75,7 @@ class CompletedPage extends Component {
                 </div>
 
             
-                    <Button href = '/Typing-Test-Site' variant = 'contained' style = {{border: '3px solid black'}}>
+                    <Button href = '/' variant = 'contained' style = {{border: '3px solid black'}}>
                        <span style = {{fontSize: '2vmax', textTransform: 'capitalize'}}> Try Again </span>
                     </Button> 
     
