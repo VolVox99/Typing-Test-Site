@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import InputBox from '../components/inputbox'
+import InputBox from '../components/main'
 
 
 class Home extends Component {
@@ -7,7 +7,7 @@ class Home extends Component {
         return (
             
             <InputBox/>
-        
+    
         )
     }
 }

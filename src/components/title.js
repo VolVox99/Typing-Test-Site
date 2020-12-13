@@ -1,16 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-
-export class title extends Component {
-    render() {
-        return (
-            <div>
-                
-                <h1 id = 'title'> Typing Test </h1>
-    
-            </div>
-        )
-    }
+function Title() {
+	return (
+		<div id='title'>
+			Typing Test
+		</div>
+	)
 }
 
-export default title
+export default Title

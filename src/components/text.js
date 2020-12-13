@@ -1,59 +1,71 @@
-import React, { Component } from 'react'
+import React from 'react'
 import axios from 'axios'
 
-class Text extends Component {
-    constructor(props) {
-        super(props)
+function Text(props) {
+   
     
-        this.state = {
-            text: ''
+    const [text, setText] = React.useState([''])
 
-        }
-
-        this.prompt_box_ref = React.createRef()
-        this.current_word_ref = React.createRef()
-        this.prev_word_ref = React.createRef()
-       
-        
-    }
+    const prompt_box_ref = React.useRef()
+    const current_word_ref = React.useRef()
+    const prev_word_ref = React.useRef()
 
 
+    React.useEffect(() => {
+        get_data().then((txt) => props.pass_back(txt, prompt_box_ref, current_word_ref, prev_word_ref))
+	}, [])
+	
 
-
-    async componentDidMount(){
-        await this.get_data()
-        this.props.pass_back(this.state.text, this.prompt_box_ref, this.current_word_ref, this.prev_word_ref)
-     
-
-      
-    }
-
-
-    async get_data(){
+    async function get_data(){
         let output = await axios.get("https://www.randomtext.me/api/gibberish/p-10/100-100")
+        let res_text = JSON.parse(output.request.response)
+			.text_out.replace(/<\/?p>/g, '')
+			.split(' ')
         
-        this.setState({
+        setText(
             //gets the text response from the request, it contains html tags tho so it uses regex to get those out, and then it turns the words into an array
-            text: JSON.parse(output.request.response).text_out.replace(/<\/?p>/g, '').split(' ')})
-        
-    }
+            res_text
+        )   
+
+        return res_text
     
+	}
+	
 
-
-
-    render() {
+    return (
+		<div id='text-prompt' ref={prompt_box_ref}>
+			{text
+				? text.map((word, index) => (
+						<span
+							key={index}
+							id={
+								props.index === index && props.error
+									? 'word-error'
+									: props.index === index
+									? 'current-word'
+									: ''
+							}
+							className={
+								props.previous_wrong_words?.includes(index)
+									? 'previous-wrong-words'
+									: ''
+							}
+							ref={
+								props.index === index
+									? current_word_ref
+									: props.index - 1 === index
+									? prev_word_ref
+									: null
+							}
+						>
+							{' '}
+							{word}{' '}
+						</span>
+				  ))
+				: ''}
+		</div>
+	)
         
-        
-        return (
-            <div id = 'text-prompt' ref = {this.prompt_box_ref}>
-                
-                {this.state.text ? this.state.text.map((word, index) => <span key = {index} 
-                id =  {this.props.index === index && this.props.error ? 'word-error': this.props.index === index ? 'current-word': ''} 
-                className = {this.props.previous_wrong_words.includes(index) ? 'previous-wrong-words': ''} ref = {this.props.index === index ? this.current_word_ref : this.props.index - 1 === index ? this.prev_word_ref: ''}> {word} </span>): ''}
-
-            </div>
-        )
-    }
 }
 
 export default Text
