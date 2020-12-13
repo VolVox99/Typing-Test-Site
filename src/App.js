@@ -9,12 +9,14 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <div>
+        </div>
 
           <Switch>
 
-            <Route path = '/Typing-Test-Site/completed' exact component = {(props) => <CompletedPage {...props}/>}/>
-            <Route path = '/Typing-Test-Site' exact component = {Home}/>
-            <Route path = '/Typing-Test-Site/' component = {ErrorPage}/>
+            <Route path = '/completed' exact component = {(props) => <CompletedPage {...props}/>}/>
+            <Route path = '/' exact component = {Home}/>
+            <Route path = '/' component = {ErrorPage}/>
 
           </Switch>
             
