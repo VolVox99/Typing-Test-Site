@@ -352,7 +352,7 @@ class InputBox extends Component {
 			return (
 				<Redirect
 					to={{
-						pathname: '/Typing-Test-Site/completed',
+						pathname: '/completed',
 						state: {
 							WPM: this.state.WPM,
 							words_wrong: this.state

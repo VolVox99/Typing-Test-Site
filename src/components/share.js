@@ -5,7 +5,7 @@ import * as shr from 'react-share'
 function Share(props) {
    
     
-    const url = { url: 'https://volvox99.github.io/Typing-Test-Site/' }
+    const url = { url: 'https://wpmtest.netlify.app/' }
     
     //I just gave it 35 as a default value if for some reason theres an error so the share message doesnt look weird
     const WPM = props.WPM ?? 35
